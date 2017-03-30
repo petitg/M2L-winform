@@ -26,12 +26,12 @@ namespace WindowsFormsApplication1
              string chaineDeconnexion = "SERVER=localhost;" + "DATABASE=m2l;" + "UID=root;" + "PASSWORD=;";
             MySqlConnection connection = new MySqlConnection(chaineDeconnexion);
             MySqlCommand maCommande = connection.CreateCommand();
-            MySqlDataReader maLigne;/*
+           /* MySqlDataReader maLigne;
             maCommande.CommandText = "REQUETE";
             connecion.open();
             maLigne = maCommande.ExecuteReader);
             while(maLigne.read))
-                                     * sring[] valeuColonnes = nw sring[5];
+                                     * string[] valeurColonnes = new string[5];
                                      * for(int i =0; i< maLigne.ielCon;i++) valeuColonnes[i] = aLigne.getValue(i).ToString();
                                      * string nom = valeurColonnes[X]
                                      * connection.close();                         
@@ -40,11 +40,41 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
 
-                 "N'appuyez plus jamais sur ce bouton","Titre"
-
-            );
         }
+
+        private void listeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listAllAdherent maFenetre = new listAllAdherent();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
+
+        private void clubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            listAllClub maFenetre = new listAllClub();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
+
+        private void listeToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ListAllEvenement maFenetre = new ListAllEvenement();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
+
+        private void ajouterAdherentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AjoutAdherent maFenetre = new AjoutAdherent();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
+
     }
 }
