@@ -37,8 +37,9 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnFermer = new System.Windows.Forms.Button();
+            this.bt_edit = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvListAdhe
@@ -50,8 +51,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader8});
             this.lvListAdhe.Location = new System.Drawing.Point(12, 12);
             this.lvListAdhe.Name = "lvListAdhe";
             this.lvListAdhe.Size = new System.Drawing.Size(1121, 432);
@@ -92,17 +92,13 @@
             // 
             this.columnHeader8.Text = "Ville";
             // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Cotisation";
-            // 
             // btnFermer
             // 
             this.btnFermer.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFermer.Image = ((System.Drawing.Image)(resources.GetObject("btnFermer.Image")));
             this.btnFermer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFermer.Location = new System.Drawing.Point(471, 450);
+            this.btnFermer.Location = new System.Drawing.Point(480, 450);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(152, 45);
             this.btnFermer.TabIndex = 29;
@@ -110,11 +106,41 @@
             this.btnFermer.UseVisualStyleBackColor = false;
             this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
             // 
+            // bt_edit
+            // 
+            this.bt_edit.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.bt_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_edit.Image = ((System.Drawing.Image)(resources.GetObject("bt_edit.Image")));
+            this.bt_edit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_edit.Location = new System.Drawing.Point(137, 450);
+            this.bt_edit.Name = "bt_edit";
+            this.bt_edit.Size = new System.Drawing.Size(152, 45);
+            this.bt_edit.TabIndex = 35;
+            this.bt_edit.Text = "&Editer";
+            this.bt_edit.UseVisualStyleBackColor = false;
+            this.bt_edit.Click += new System.EventHandler(this.bt_edit_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btn_Delete.Image")));
+            this.btn_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Delete.Location = new System.Drawing.Point(791, 450);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(152, 45);
+            this.btn_Delete.TabIndex = 36;
+            this.btn_Delete.Text = "&Supprimer";
+            this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
             // ListeAllAdherents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 547);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.bt_edit);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.lvListAdhe);
             this.Name = "ListeAllAdherents";
@@ -135,7 +161,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.Button btnFermer;
+        private System.Windows.Forms.Button bt_edit;
+        private System.Windows.Forms.Button btn_Delete;
     }
 }

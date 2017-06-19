@@ -71,5 +71,37 @@ namespace M2L_ProjetWinform
             maFenetre.MdiParent = this;
             maFenetre.Show();
         }
+
+        private void ajouterToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AjoutClub maFenetre = new AjoutClub();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
+
+        private void donnéesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombreDadherentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fermezToutesLesFenetresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Close();
+            }
+        }
+
+        private void statistiqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Statistics maFenetre = new Statistics();
+            maFenetre.MdiParent = this;
+            maFenetre.Show();
+        }
     }
 }

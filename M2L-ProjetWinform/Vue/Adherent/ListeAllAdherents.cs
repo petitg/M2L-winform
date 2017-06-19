@@ -14,13 +14,15 @@ namespace M2L_ProjetWinform
     {
         public ListeAllAdherents()
         {
-            
+
             InitializeComponent();
         }
         string ordre = "ASC";
         private void ListeAllAdherents_Load(object sender, EventArgs e)
         {
-            List<Adherent> LesAdherents = AccessDB.getAllAdherent("naissance",ordre);
+            btn_Delete.Enabled = false;
+            bt_edit.Enabled = false;
+            List<Adherent> LesAdherents = DBAdherent.getAllAdherent("naissance",ordre);
             foreach (Adherent unAdh in LesAdherents)
             {
                 ListViewItem laLigne = new ListViewItem();
@@ -31,7 +33,6 @@ namespace M2L_ProjetWinform
                 laLigne.SubItems.Add(unAdh.getRue());
                 laLigne.SubItems.Add(unAdh.getCp());
                 laLigne.SubItems.Add(unAdh.getVille());
-                laLigne.SubItems.Add(unAdh.getCotisation().ToString());
                 lvListAdhe.Items.Add(laLigne);
             }
             lvListAdhe.Sorting = SortOrder.None;
@@ -39,6 +40,8 @@ namespace M2L_ProjetWinform
         
         private void lvListAdhe_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btn_Delete.Enabled = true;
+            bt_edit.Enabled = true;
         }
 
         private void lvAdher_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -111,7 +114,7 @@ namespace M2L_ProjetWinform
                         ordre = "ASC";
                     break;
             }
-            List<Adherent> LesAdherents = AccessDB.getAllAdherent(colonne, ordre);
+            List<Adherent> LesAdherents = DBAdherent.getAllAdherent(colonne, ordre);
             foreach (Adherent unAdh in LesAdherents)
             {
                 ListViewItem laLigne = new ListViewItem();
@@ -122,7 +125,6 @@ namespace M2L_ProjetWinform
                 laLigne.SubItems.Add(unAdh.getRue());
                 laLigne.SubItems.Add(unAdh.getCp());
                 laLigne.SubItems.Add(unAdh.getVille());
-                laLigne.SubItems.Add(unAdh.getCotisation().ToString());
                 lvListAdhe.Items.Add(laLigne);
             }
 
@@ -131,6 +133,68 @@ namespace M2L_ProjetWinform
         private void btnFermer_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_edit_Click(object sender, EventArgs e)
+        {
+            List<Adherent> AllAdhe = DBAdherent.getAllAdherent();
+            int i = -1;
+            bool trouve = false;
+            while (i < AllAdhe.Count && !trouve)
+            {
+                i++;
+                if (AllAdhe.ElementAt(i).getNom() == lvListAdhe.SelectedItems[0].SubItems[0].Text && AllAdhe.ElementAt(i).getPrenom() == lvListAdhe.SelectedItems[0].SubItems[1].Text)
+                {
+                    trouve = true;
+                }
+            }
+            EditAdherent maFenetre = new EditAdherent(AllAdhe.ElementAt(i));
+            maFenetre.MdiParent = this.MdiParent; 
+            maFenetre.Show();
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            List<Adherent> AllAdhe = DBAdherent.getAllAdherent();
+            int i = -1;
+            bool trouve = false;
+            while (i < AllAdhe.Count && !trouve)
+            {
+                i++;
+                if (AllAdhe.ElementAt(i).getNom() == lvListAdhe.SelectedItems[0].SubItems[0].Text && AllAdhe.ElementAt(i).getPrenom() == lvListAdhe.SelectedItems[0].SubItems[1].Text)
+                {
+                    trouve = true;
+                }
+            }
+            if (MessageBox.Show("Voulez vous vraiment supprimer l'utilisateur " + AllAdhe.ElementAt(i).getNom() + "  " + AllAdhe.ElementAt(i).getPrenom() + " ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                DBAdherent.DeleteAdhe(AllAdhe.ElementAt(i).getId());
+                lvListAdhe.Items.Clear();
+                AllAdhe = DBAdherent.getAllAdherent();
+                List<Adherent> LesAdherents = DBAdherent.getAllAdherent("naissance", ordre);
+                foreach (Adherent unAdh in LesAdherents)
+                {
+                    ListViewItem laLigne = new ListViewItem();
+                    laLigne.Text = unAdh.getNom();
+                    laLigne.SubItems.Add(unAdh.getPrenom());
+                    laLigne.SubItems.Add(unAdh.getSexe().ToString());
+                    laLigne.SubItems.Add(unAdh.getNaissance());
+                    laLigne.SubItems.Add(unAdh.getRue());
+                    laLigne.SubItems.Add(unAdh.getCp());
+                    laLigne.SubItems.Add(unAdh.getVille());
+                    lvListAdhe.Items.Add(laLigne);
+                }
+                MessageBox.Show("L'utilisateur a bien été supprimer ");
+            }
+            else
+            {
+                MessageBox.Show("L'utilisateur " + AllAdhe.ElementAt(i).getNom() + "  " + AllAdhe.ElementAt(i).getPrenom() + " n'a pas été supprimer");
+            }
         }
     }
 }
